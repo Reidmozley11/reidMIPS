@@ -25,6 +25,7 @@
 		
 		la $a0, userInput1
 		jal stringLength
+		jal strfind1
 		move $s1, $t0 # stores the length of the users input in $s1
 		subi $s1, $s1, 1 # fixes the offset 
 	
@@ -106,6 +107,10 @@
 	
 	nestLoop: 
 		bge $t5, $t2, bigLoop
+		sll $t7, $t4, 2 # i * 4 
+		add $t6, $t4, $t5 # i + j which is the current array address
+		lb $t8, $t7($a0) # userInput[i] 
+		bne  , 
 	
 	exit2:
 		jr $ra
